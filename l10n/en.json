@@ -1,0 +1,17 @@
+{
+  "plugin.name": "React",
+  "plugin.description": "Detects React, Next.js, Create React App and Vite; keeps old scaffolds running on new Node",
+  "problem.legacy.title": "OpenSSL legacy provider required",
+  "problem.legacy.message": "{0} is based on webpack 4 and fails with ERR_OSSL_EVP_UNSUPPORTED (0308010C) on Node {1}.",
+  "fix.opensslLegacy": "Enable OpenSSL legacy provider",
+  "fix.useNode16": "Use Node 16",
+  "fix.killPort": "Kill the process using the port",
+  "fix.useRequiredNode": "Switch to the required Node version",
+  "fix.installDependencies": "Reinstall dependencies",
+  "diag.react.port.title": "Port {1} is in use",
+  "diag.react.port.message": "Create React App does not pick another port when not interactive.",
+  "diag.react.next-node.title": "Next.js requires Node {1}",
+  "diag.react.next-node.message": "The current Node is older than this Next.js version requires.",
+  "diag.react.next-swc.title": "Next.js compiler failed to load",
+  "diag.react.next-swc.message": "The SWC binary for this platform is not installed, usually because the lockfile was created on another system or the install was interrupted."
+}

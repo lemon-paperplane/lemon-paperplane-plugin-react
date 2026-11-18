@@ -1,0 +1,132 @@
+{
+  "id": "react",
+  "name": "%plugin.name%",
+  "version": "0.1.0",
+  "vendor": "Lemon Paperplane",
+  "description": "%plugin.description%",
+  "icon": "icons/react.svg",
+  "license": "MIT",
+  "category": "framework",
+  "engines": {
+    "paperplane": ">=0.1.0 <0.2.0"
+  },
+  "protocol": 1,
+  "executable": "bin/paperplane-plugin-react",
+  "dependencies": [
+    {
+      "id": "nodejs"
+    }
+  ],
+  "activation": {
+    "facets": [
+      "nodejs"
+    ]
+  },
+  "contributes": {
+    "facets": [
+      {
+        "id": "react",
+        "name": "React",
+        "icon": "icons/react.svg",
+        "category": "framework",
+        "priority": 80
+      },
+      {
+        "id": "nextjs",
+        "name": "Next.js",
+        "icon": "icons/nextjs.svg",
+        "category": "framework",
+        "priority": 85
+      }
+    ],
+    "diagnostics": [
+      {
+        "id": "react.cra-port",
+        "hint": "Something is already running on port",
+        "pattern": "Something is already running on port (\\d+)",
+        "severity": "error",
+        "title": "%diag.react.port.title%",
+        "message": "%diag.react.port.message%",
+        "facets": [
+          "react"
+        ],
+        "fixes": [
+          {
+            "id": "kill",
+            "title": "%fix.killPort%",
+            "kind": "killPort",
+            "params": {
+              "port": "{1}"
+            },
+            "recommended": true
+          }
+        ]
+      },
+      {
+        "id": "react.next-node-range",
+        "hint": "For Next.js, Node.js version",
+        "pattern": "For Next\\.js, Node\\.js version \\\"([^\\\"]+)\\\" is required",
+        "severity": "error",
+        "title": "%diag.react.next-node.title%",
+        "message": "%diag.react.next-node.message%",
+        "facets": [
+          "nextjs"
+        ],
+        "fixes": [
+          {
+            "id": "node",
+            "title": "%fix.useRequiredNode%",
+            "kind": "setToolchain",
+            "params": {
+              "kind": "node",
+              "constraint": "{1}"
+            },
+            "recommended": true
+          }
+        ]
+      },
+      {
+        "id": "react.next-node-min",
+        "hint": "For Next.js, Node.js version",
+        "pattern": "For Next\\.js, Node\\.js version (?:>=\\s*)?v?(\\d+(?:\\.\\d+)*) is required",
+        "severity": "error",
+        "title": "%diag.react.next-node.title%",
+        "message": "%diag.react.next-node.message%",
+        "facets": [
+          "nextjs"
+        ],
+        "fixes": [
+          {
+            "id": "node",
+            "title": "%fix.useRequiredNode%",
+            "kind": "setToolchain",
+            "params": {
+              "kind": "node",
+              "constraint": ">={1}"
+            },
+            "recommended": true
+          }
+        ]
+      },
+      {
+        "id": "react.next-swc",
+        "hint": "Failed to load SWC binary",
+        "pattern": "Failed to load SWC binary",
+        "severity": "error",
+        "title": "%diag.react.next-swc.title%",
+        "message": "%diag.react.next-swc.message%",
+        "facets": [
+          "nextjs"
+        ],
+        "fixes": [
+          {
+            "id": "install",
+            "title": "%fix.installDependencies%",
+            "kind": "installDependencies",
+            "recommended": true
+          }
+        ]
+      }
+    ]
+  }
+}
